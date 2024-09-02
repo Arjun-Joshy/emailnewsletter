@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.3.7.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		pre { background: transparent }
+		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		pre.cjk { font-family: "NSimSun", monospace; font-size: 10pt }
+		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">Delivered-To: arjun@goodfellas.studio
+Received: by 2002:ab2:6d5:0:b0:205:a858:3750 with SMTP id 21csp1005790lqx;
+        Thu, 1 Aug 2024 05:30:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=4; AJvYcCUuqrcPVu5IeuNWzhaOugx+jQiC8wfuYLOy0y40/cVG+chMCJu8oET7QIOXZsRH7CwYYFLtWE2NDeEPLhD/W0iMsKWOUQmydg==
+X-Received: by 2002:a05:6902:2005:b0:e03:5e6c:57b2 with SMTP id 3f1490d57ef6-e0bcd4f7bb8mr2023577276.53.1722515442142;
+        Thu, 01 Aug 2024 05:30:42 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1722515442; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=hQoMn8mDiM1chUEOef7+dOm1lPrZYmS+W/zFKOAoA1wm1p2gsb0+JTkWRG9g1+ofMO
+         2zQuNn3Zl/GSAq5uZTEi82vIPdyRe1nds4QRgY4GJnwovx22KPgKZ/JQZ8RR6ZC3Nx/M
+         I1HVn8RynxfXFHhMQ0ZJq8by0et+fhINr/vYCIPULdsEqq4Ll8EamPEWBpjwP3QaiAu1
+         DFrfI/8C1lPLxPLUdFHOiMJWuYyWCie3d/1G2E+ZS9QM3gitqQrGjhdyNHpgHq0yQCGs
+         h4GTLB9YbXPIV4yIqhVl4+6mc4IC1SUIdWYk8cLLzbcLrBL7LhFiNbkZLiqrZljGSYtg
+         DVtg==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-archive:list-help:list-post:list-id:mailing-list:precedence:to
+         :list-unsubscribe-post:list-unsubscribe:reply-to:subject:message-id
+         :mime-version:from:date:dkim-signature;
+        bh=c/4P8S+Xe/JM6JYweJUEvxaL/uYYeG/Ue0FrEb0oqmo=;
+        fh=iUSrxRcWD9Qd/CLYpJwudOTfoFM7908GxJ/oQtWvTSQ=;
+        b=qXck7CGo+TFWuOkMeAR7tDPxUjG6hZdgfKvRjOJFXfdbtj8UhCkropAplE60Q274SF
+         a913PawmPj6xBUAVobCsKFxCvYaq6ys7uwZkEm915Px1nEwg5vAJ5qiuuMKnLmKWuhZu
+         g9mjIBB8mw/EV+q43ritmv17TguTZtTaEEpORmBsfV5mWZ7t95EQQCt4fznk3lxrUsxz
+         uVqnYLsFcHICntwsSy/t4Kjz9r0W1ELXobEHgsKh2hvNRBHdK3DLhAOhyNibEKDKTePY
+         8TlRXJMpG1RkmrwAVjS0QXgO/3hJ/GO8D9qyyCTSfbVVzRLB1SQKGA/pix9dS+KPJASA
+         FzZw==;
+        dara=google.com
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@goodfellas-studio.20230601.gappssmtp.com header.s=20230601 header.b=JHv5Wi4f;
+       arc=pass (i=2 dkim=pass dkdomain=goodfellas.studio dmarc=pass fromdomain=goodfellas.studio);
+       spf=softfail (google.com: domain of transitioning gfsmain+bncbcaypmwdu4drb4p7vw2qmgqedhko7bq@goodfellas.studio does not designate 209.85.220.69 as permitted sender) smtp.mailfrom=gfsmain+bncBCAYPMWDU4DRB4P7VW2QMGQEDHKO7BQ@goodfellas.studio;
+       dmarc=fail (p=NONE sp=NONE dis=NONE arc=pass) header.from=goodfellas.studio;
+       dara=pass header.i=@goodfellas.studio
+Return-Path: &lt;gfsmain+bncBCAYPMWDU4DRB4P7VW2QMGQEDHKO7BQ@goodfellas.studio&gt;
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id 3f1490d57ef6-e0bc8a18566sor1903871276.18.2024.08.01.05.30.41
+        for &lt;arjun@goodfellas.studio&gt;
+        (Google Transport Security);
+        Thu, 01 Aug 2024 05:30:42 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning gfsmain+bncbcaypmwdu4drb4p7vw2qmgqedhko7bq@goodfellas.studio does not designate 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@goodfellas-studio.20230601.gappssmtp.com header.s=20230601 header.b=JHv5Wi4f;
+       arc=pass (i=2 dkim=pass dkdomain=goodfellas.studio dmarc=pass fromdomain=goodfellas.studio);
+       spf=softfail (google.com: domain of transitioning gfsmain+bncbcaypmwdu4drb4p7vw2qmgqedhko7bq@goodfellas.studio does not designate 209.85.220.69 as permitted sender) smtp.mailfrom=gfsmain+bncBCAYPMWDU4DRB4P7VW2QMGQEDHKO7BQ@goodfellas.studio;
+       dmarc=fail (p=NONE sp=NONE dis=NONE arc=pass) header.from=goodfellas.studio;
+       dara=pass header.i=@goodfellas.studio
+ARC-Seal: i=2; a=rsa-sha256; t=1722515441; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=yqVNV2QTQTtuMFa4zsD954ht4gZ+QlL9P72F9xkakk/DlWLFTifdyiGd8cDkn4tLrf
+         A0MjweE3Q00kICth6YHuvI31ENt8bseESAD2s9ijOchnkAxgNHbhM/+nTnjzvvia/TpH
+         2YwAK4Umjd+W/j4BlxytUlNFZ/LGRBY3GbQP1pORABmk7LnqtGG3FTjfzoiXblV8XFcJ
+         gvnExjl0rb4VFwnO65k2/NzvZUfinv99R/wJF0IRVF+39NJNWLW2ORUyU4bYcGqetGSN
+         0glVFfFn/Ug+dbLCN41zPiyZXegOwcVwZImAMzbzBzSA5f8dn90aARnAHOrvzVQ+Y4ns
+         dzUg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-archive:list-help:list-post:list-id:mailing-list:precedence:to
+         :list-unsubscribe-post:list-unsubscribe:reply-to:subject:message-id
+         :mime-version:from:date:dkim-signature;
+        bh=c/4P8S+Xe/JM6JYweJUEvxaL/uYYeG/Ue0FrEb0oqmo=;
+        fh=iUSrxRcWD9Qd/CLYpJwudOTfoFM7908GxJ/oQtWvTSQ=;
+        b=wVgtxjUWsHm6moGFry1wuEpKvxwfRT+k0ajgTvTUzFaUpmSk0pTGsLUXNtSiwIKZZm
+         S/B0r7f2AhHrlwXCCMjdSTtRnnaFKF9rGIs/2qdgF/uNFNw6DwG9+iuhxofP9FvrXMjK
+         jXhBJi28Uz0yuKsLkKtxYkkCr1URhix9SAUq2Ssvw2XfWyLH1Et1MTJ9wkKwgFTEIy+x
+         kIXcMjLmWTbFK3767NzSDLM74ixkKOe0MaQqZSm2Dd3M/Oi2Ct1fLXQRLheJKZkGC3Mv
+         JuvYZIwZ01qxne6pN1Z/iZj+CpF09IUfxvs0RCX6IDCZz5Bw4xWXBeYgGar08hD4ozhH
+         qmVA==;
+        darn=goodfellas.studio
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@goodfellas.studio header.s=s1 header.b=sFl6dVcx;
+       spf=none (google.com: bounces+45589122-cb7c-gfsmain=goodfellas.studio@em4749.goodfellas.studio does not designate permitted sender hosts) smtp.mailfrom=&quot;bounces+45589122-cb7c-gfsmain=goodfellas.studio@em4749.goodfellas.studio&quot;;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=goodfellas.studio
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=goodfellas-studio.20230601.gappssmtp.com; s=20230601; t=1722515441; x=1723120241; darn=goodfellas.studio;
+        h=list-archive:list-help:list-post:list-id:mailing-list:precedence
+         :x-original-authentication-results:x-original-sender:to
+         :list-unsubscribe-post:list-unsubscribe:reply-to:subject:message-id
+         :mime-version:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=c/4P8S+Xe/JM6JYweJUEvxaL/uYYeG/Ue0FrEb0oqmo=;
+        b=JHv5Wi4fZ3TqcToEHtXa5vmBbeno/vLpDCUHNwOXnUZn0E+WAVxfeaakGgscXrCSEi
+         XHl1Yloo1+M/jMVVakdK0AaeFzzkOmMj2Wh4mP9eSoqXYCMq3Kt1d/e/OkHs+jmisGFu
+         DSXpdnnzls/0L0LgSpqmB1OrgXY79v+JCo8ZJceWHkfGzcEk7mpNzyEjzJB+9AwhXSCM
+         4BmCtH0ngcKoEg6hoytNDgfj+SDvz4GSlJeTJ7bEaouAu3O1zFt5dKYrobG+1mWryRuP
+         qTt0xX+GXn2hgIMZs3QJCpMRmLHpV+pr+KEog0wSQkfKSIDVE3BOHoR8iuqeXB2zjuTU
+         V0tQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722515441; x=1723120241;
+        h=list-archive:list-help:list-post:x-spam-checked-in-group:list-id
+         :mailing-list:precedence:x-original-authentication-results
+         :x-original-sender:to:list-unsubscribe-post:list-unsubscribe
+         :reply-to:subject:message-id:mime-version:from:date:x-beenthere
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=c/4P8S+Xe/JM6JYweJUEvxaL/uYYeG/Ue0FrEb0oqmo=;
+        b=MHp6/+j9iNAvBKsgbgDx2agGLONVeBFdc2AkdlM3MnGf82773loRVMDrWkDENagIa4
+         ejzX5dLCm8VvoAX+9I+ukw3BIA/ECeKiq7V3+7GIl7Hx58ubM0o6Ra/3CSevtS4uMFWk
+         2ewJefQxgjQZZ6seMdUQ2VNMhPfoxXPWx2et5LDbIhLge8Je2UUdWpgnCis6pYQsYhXp
+         OdD1+seuPcEJkPL8PBsbh1p56QrcV/C4QVksAiGmoK6fKtHDJORspZARzrI3ru3lF6aF
+         X79Tos2kVpaK4KhBakUF4DJ9m7X7Ye/rwri6emWX5zr8lbCHglnvyR0HWo7lfDWry2lc
+         u0aw==
+X-Forwarded-Encrypted: i=2; AJvYcCVj0Te8JHgtc0aUqa2GeO6qWgid3kq+BUNp7v0q+d6+sRQWFyignhMAHon3t08lgqxu6ESlw8xUNXw6GWj4XvhIIwNoDwiYUA==
+X-Gm-Message-State: AOJu0YwgPRShtDlyA2apLGIUKV+vocjwpkRxViU9UEd7ZQKHZDFYn6dF
+	W35Jw7+Auu0oZKroWsXDWVOtGp67j8eIaFjql5aoIrfANkHis6KaRJiDYNjo8324+A==
+X-Google-Smtp-Source: AGHT+IFDsBLkdvQNE4I6OhtTPI05m1i1kqnlvfzrdqlpoLBXqP4xYl1XxhzJ2Rx+aBE6H3t5N/22/A==
+X-Received: by 2002:a05:6902:2b8c:b0:e03:53f0:2438 with SMTP id 3f1490d57ef6-e0bcd2961cfmr2916631276.7.1722515441204;
+        Thu, 01 Aug 2024 05:30:41 -0700 (PDT)
+X-BeenThere: gfsmain@goodfellas.studio
+Received: by 2002:a05:6902:188e:b0:e0b:ba20:7f79 with SMTP id
+ 3f1490d57ef6-e0bba208105ls3247950276.2.-pod-prod-05-us; Thu, 01 Aug 2024
+ 05:30:40 -0700 (PDT)
+X-Received: by 2002:a0d:f4c1:0:b0:64a:7040:2d8e with SMTP id 00721157ae682-6874f22be98mr3882447b3.33.1722515416552;
+        Thu, 01 Aug 2024 05:30:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722515416; cv=none;
+        d=google.com; s=arc-20160816;
+        b=a/LSfxLAKOMhCTmKgphct9Z9NKBuIrBjfp0Q3/p+H6RloCqecbGjArlRkUeTLPKana
+         cK3ETi4p++rFdl+bYkuhRSnjwL+hKbgOYyn/cH+WcE7Ri430u1a4e4Fn3Fcqi8IwyMVK
+         NzXhLAdznoMIMs3SX7TlGqe3ZEb5VSy/rQCfLCzeTdmQurOyb9TXR0TCjWKqZG/Ax1GX
+         +vjGSRehbfpga0N3/eYyp2WcHV41/+qErpnigV6duiWLpOYfXfvxifljTBJ/rAFjVrok
+         cn0NfDYvpBgzJdxHiHiDsUnMYyycR1eEvs0Z/a8vaZ9qTvo6aiIy74RXhdLQPgIOi6FD
+         CINA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:list-unsubscribe-post:list-unsubscribe:reply-to:subject
+         :message-id:mime-version:from:date:dkim-signature;
+        bh=c/4P8S+Xe/JM6JYweJUEvxaL/uYYeG/Ue0FrEb0oqmo=;
+        fh=HmYgsv3j+ykyKCj+Fago1S14yNmh/2W0d0KLZs3zY1Q=;
+        b=sZMiLZmEupwg5e/KhUqKVFM3WPy/RQ6YDnLjpB3HAi+j9OcXWkBfprWddMpAtkX9GE
+         Bske99JYcQsyh7E2BEzufbo2ctwXywYRQCb6Wv/XfpDUuhrZEoiIsFBGTtx4HfoSf72B
+         3KLvCdOVJTiYZYiW7Se3v3AQ4U9RWVvi2nPdmAR7+WosWQZ5TDbOz7oQ+3s8YJD41es1
+         B+b1b0z9Nxo9Yt+9i7K2p85e93kv6ftzKiUNqzKTEDBXuBQumX+hbPzPN8MFQ8DQsfxH
+         LxPKHlpaToGa8WE81dWC2aY/grzIPrQ62ke4LzlR3mgKh1qLPlO58eTrnHrIkk++3wjS
+         ox8Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@goodfellas.studio header.s=s1 header.b=sFl6dVcx;
+       spf=none (google.com: bounces+45589122-cb7c-gfsmain=goodfellas.studio@em4749.goodfellas.studio does not designate permitted sender hosts) smtp.mailfrom=&quot;bounces+45589122-cb7c-gfsmain=goodfellas.studio@em4749.goodfellas.studio&quot;;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=goodfellas.studio
+Received: from xtrwhxbr.outbound-mail.sendgrid.net (xtrwhxbr.outbound-mail.sendgrid.net. [167.89.10.181])
+        by mx.google.com with ESMTPS id 00721157ae682-6756da67377si92471077b3.427.2024.08.01.05.30.16
+        for &lt;gfsmain@goodfellas.studio&gt;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 Aug 2024 05:30:16 -0700 (PDT)
+Received-SPF: none (google.com: bounces+45589122-cb7c-gfsmain=goodfellas.studio@em4749.goodfellas.studio does not designate permitted sender hosts) client-ip=167.89.10.181;
+Received: by recvd-b887ddd65-8bqms with SMTP id recvd-b887ddd65-8bqms-1-66AB7FD5-10
+	2024-08-01 12:30:13.322040843 +0000 UTC m=+227451.541009631
+Received: from NDU1ODkxMjI (unknown)
+	by geopod-ismtpd-36 (SG) with HTTP
+	id _k-wpSE5TvC-dutWeAeI0w
+	Thu, 01 Aug 2024 12:30:13.301 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=226b847d74f127313a53e12ea5feba233610d6ab3acd84f785477eddf3f7
+Date: Thu, 01 Aug 2024 12:30:16 +0000 (UTC)
+From: Ridhesh Sejpal | Goodfellas Studio &lt;ridhesh@goodfellas.studio&gt;
+Mime-Version: 1.0
+Message-ID: &lt;_k-wpSE5TvC-dutWeAeI0w@geopod-ismtpd-36&gt;
+Subject: How does an AD-Film get made?
+Reply-To: connect@goodfellas.studio
+List-Unsubscribe: &lt;mailto:googlegroups-manage+487294898432+unsubscribe@googlegroups.com&gt;,
+ &lt;https://groups.google.com/a/goodfellas.studio/group/gfsmain/subscribe&gt;
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-SG-EID: =?us-ascii?Q?u001=2E07g7IcmjJzzJLMx=2F1rFvnCG1Jw3G6IFSS6nJMY=2Fs596noAcAHgRItWmSN?=
+ =?us-ascii?Q?TdfYYaTW6OVf1nI4q=2FAQzB2zt3I5rrD6xR4Ch+V?=
+ =?us-ascii?Q?m+CpG6Vdiyrqt1lkIEKbdDsnbDN1wLs+lTxak+5?=
+ =?us-ascii?Q?96qhj+cO0ELHzDufzr0woipxYCKCZH1Mtwf=2Fd9h?=
+ =?us-ascii?Q?AxD0nnFFAnmwKWAuPQjhCtBaVVvLbi69znPkSDH?=
+ =?us-ascii?Q?yUR8VL50RsoQbQCHaGTUSUZ6nZWgIYmSTNdEbir?=
+ =?us-ascii?Q?c=2FQrTe7V6f=2FMuXfr7TMVBSv2zZGlhpXjHbZDzD=2F?=
+ =?us-ascii?Q?euPyadjk=3D?=
+X-SG-ID: =?us-ascii?Q?u001=2EXwhBPNhCejkv4+fVosb2QVfR16Qxp9CrA7PjDe5zzeI=2F0IZCBsPXtgHbA?=
+ =?us-ascii?Q?oGIj+RskLxA4N2rJjSWrHfgX07tLOm0v5BUQcd6?=
+ =?us-ascii?Q?w3knjorGi7Hwu0WCOA5AFSvy0=2FwlG32=2FwR=2FbDvN?=
+ =?us-ascii?Q?KU+kw4WXehK7SDg1LFGro8vcD=2FANWiLZPYSOWK=2F?=
+ =?us-ascii?Q?POW9cmD=2Fxq7qLDzdjkzxlet+CIODEL4AZWanoaJ?=
+ =?us-ascii?Q?7TlTknCqcCOBLBnKMuHOUEnZFhydp8WhLAYh9yl?=
+ =?us-ascii?Q?j8Gv4qsK4QZeSJ38iQMZyNwvCRtQDKyXDp0Lp1g?=
+ =?us-ascii?Q?R=2Fy8p92CqGs1j1R+kZbGHqWPzp0SlfEqIi0Docv?=
+ =?us-ascii?Q?9CypiNeBOppgEfNypGykWoZfmJLbzzHbGhAEOtb?=
+ =?us-ascii?Q?VtiOuv=2FyYP81cSYh39ROyzc0kE7k7FOT0PSjfVx?=
+ =?us-ascii?Q?VxBctXjauG=2Fvp8lOmPjC1oqu9Hsd3sJeDTxHcVV?=
+ =?us-ascii?Q?dPUKbyKiDql+LHMOLpZumunUpiL3WeULCLCFnMi?=
+ =?us-ascii?Q?1A7BvZMlvyIMCqNXB1Ovr8pzNONm37LE2s376N0?=
+ =?us-ascii?Q?=2FzN3VupFtILWqbxTshZ9z=2FMssmtJoV93ywLOYVR?=
+ =?us-ascii?Q?WM43aNgCrJw5EeUE3Vgk+tK+0GGfrGdo7wmX08=2F?=
+ =?us-ascii?Q?DpUZFmF3Quaoah80YIdQ10DGbcB3DrRAMIHP6fa?=
+ =?us-ascii?Q?YWbtcHEH6BON=2Fvu3ro5T68TAh0QoFaRqyNaDiHk?=
+ =?us-ascii?Q?a5dBpwQVF7qpMiLsFlaiDE+?=
+To: gfsmain@goodfellas.studio
+X-Entity-ID: u001.JG1XVxWoGzZ3JxXaeVLDag==
+X-Original-Sender: ridhesh@goodfellas.studio
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@goodfellas.studio header.s=s1 header.b=sFl6dVcx;       spf=none
+ (google.com: bounces+45589122-cb7c-gfsmain=goodfellas.studio@em4749.goodfellas.studio
+ does not designate permitted sender hosts) smtp.mailfrom=&quot;bounces+45589122-cb7c-gfsmain=goodfellas.studio@em4749.goodfellas.studio&quot;;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=goodfellas.studio
+Precedence: list
+Mailing-list: list gfsmain@goodfellas.studio; contact gfsmain+owners@goodfellas.studio
+List-ID: &lt;gfsmain.goodfellas.studio&gt;
+X-Spam-Checked-In-Group: gfsmain@goodfellas.studio
+X-Google-Group-Id: 487294898432
+List-Post: &lt;https://groups.google.com/a/goodfellas.studio/group/gfsmain/post&gt;, &lt;mailto:gfsmain@goodfellas.studio&gt;
+List-Help: &lt;https://support.google.com/a/goodfellas.studio/bin/topic.py?topic=25838&gt;,
+ &lt;mailto:gfsmain+help@goodfellas.studio&gt;
+List-Archive: &lt;https://groups.google.com/a/goodfellas.studio/group/gfsmain/&gt;
+
+--226b847d74f127313a53e12ea5feba233610d6ab3acd84f785477eddf3f7
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Mime-Version: 1.0
+
+Showcasing in our own way how an ad film is made, the 'Good' way
+
+( https://goodfellas.studio/ )
+
+When we started Goodfellas Studio, we did not just want to make great ad fi=
+lms, we wanted to inspire others with what we do. In order to do this, we h=
+ave decided to give you an insight on what goes in to making an ad film by =
+introducing a new segment - #goodvaluesbygoodfellas, where, our tribe, part=
+ners and clients, get to understand the know-how of ad filmmaking, so that =
+you know how we do what we do.
+
+( https://www.instagram.com/p/C7hB9C-IpkS/ )
+
+( https://www.instagram.com/p/C7PBVEiJ2jc/ )
+
+( https://www.instagram.com/p/C76zF5cJGZw/ )
+
+In the last quarter, we have been showered with work from the best brands i=
+n the country. We managed to tell stories that connect to the soul, making =
+the brand's relevance clear to the audience. From Pine Labs to Garnier, fro=
+m A.R Rahman to John Abraham, our calendar has made us smile through the fi=
+rst half of this year.
+
+But this isn't the only reason we are smiling. One of our projects from las=
+t year, with Lenovo, was our first entry to the Cannes Lions. While we didn=
+'t get the shortlist, the experience was truly amazing.
+
+Check out some of the exciting work we have done over the last quarter. We =
+hope you enjoy viewing them as much as we enjoyed making them.
+
+Do you have a script or an idea for you or your client? Drop us a line toda=
+y!
+
+( https://goodfellas.studio/portfolio/garnier-men-x-mi/ )
+
+GARNIER | JOHN X MUMBAI INDIAS
+AcnoFight Men's Face Wash
+
+In this campaign for IPL 2024, along with John Abraham and MI, we blend cri=
+cket with unexpected elements to promote Garnier's new AcnoFight face wash =
+for men.
+
+Agency: Schbang
+Director: Anish Dedhia
+
+( https://goodfellas.studio/portfolio/pine-labs/ )
+
+PINE LABS | GODREJ &amp; TITAN
+Effortless Success With Pine Labs
+
+We created two films, showcasing collaboration with Godrej and Titan. The f=
+ilms emphasise seamless payment processes, modern technology, and interest-=
+free EMI options to enhance the brand image and attract new business partne=
+rships.
+
+Client: Pine Labs
+Director: Kushang Dholakia
+
+( https://goodfellas.studio/portfolio/bullet-echo-india/ )
+
+KRAFTON | BULLET ECHO
+Action Redefined
+
+Made four quirky ads targeting the 18-28 age group, highlighting the game's=
+ strategic team play and tactical stealth gameplay, using memorable moments=
+ and distinct visuals to capture the game's essence.
+
+Client: Krafton
+Director: Ray Rajdip
+
+METABAND | #SECRETMOUNTAIN
+Secret Mountain with A.R Rahman
+
+We collaborated for a project, blending music, technology, and storytelling=
+ with an intricate, mystical world where audiences explore narratives rich =
+with fantasy, myth and technology.
+
+Client: AR Rahman Sir
+Director: Deeksha Tripathi
+
+( https://goodfellas.studio/portfolio/ar-rahman/ )
+
+NOBROKER| AC &amp;=A0PAINT SERVICES
+No Fear With NoBroker
+
+We crafted humorous and visually striking 20 seconders for their new AC ser=
+vicing and home painting services highlighting reliability and trust, with =
+rich colours and centered framing to enhance storytelling.
+
+Client: NoBroker
+Director: Kushang Dholakia
+
+( https://goodfellas.studio/portfolio/nobroker/ )
+
+ARTICLE | MANIFEST MEDIA
+Our First CANNES Journey
+
+A coverage by Manifest Media on our first Cannes entry and the journey in s=
+hooting the series with FCB Kinnect. The series garnered over 40 million vi=
+ews with an IMDb rating of 9.5.
+
+( https://www.manifest-media.in/advertising/070624/india-at-cannes-goodfell=
+as-studios-entry.html )
+
+( https://linktr.ee/goodfellasstudio )
+
+To Know more drop us an email at
+*connect@goodfellas.studio* ( connect@goodfellas.studio?subject=3DEnquiry&amp;b=
+ody=3D )
+or
+call us at *+91-9820816145* ( tel:+919820816145 )
+
+FOLLOW us by clicking on social buttons below.
+
+( https://www.instagram.com/goodfellas.studio/ )
+
+Instagram
+
+( https://www.facebook.com/goodfellasin/ )
+
+Facebook
+
+( https://www.youtube.com/@GoodFellasStudio )
+
+YouTube
+
+( https://www.linkedin.com/company/good-fellas-studio/ )
+
+LinkedIn
+
+We'd love to connect with you, via mail once in 2 months, just to let you k=
+now about the latest industry news &amp; trends as well as what we've been up t=
+o. If you feel disturbed, no worries! You can opt out anytime by clicking b=
+elow.
+--226b847d74f127313a53e12ea5feba233610d6ab3acd84f785477eddf3f7
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=us-ascii
+Mime-Version: 1.0
+
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html data-editor-version=3D&quot;2&quot; class=3D&quot;sg-campaigns&quot; xmlns=3D&quot;http://www.=
+w3.org/1999/xhtml&quot;&gt;
+    &lt;head&gt;
+      &lt;meta http-equiv=3D&quot;Content-Type&quot; content=3D&quot;text/html; charset=3Dutf=
+-8&quot;&gt;
+      &lt;meta name=3D&quot;viewport&quot; content=3D&quot;width=3Ddevice-width, initial-scal=
+e=3D1, minimum-scale=3D1, maximum-scale=3D1&quot;&gt;
+      &lt;!--[if !mso]&gt;&lt;!--&gt;
+      &lt;meta http-equiv=3D&quot;X-UA-Compatible&quot; content=3D&quot;IE=3DEdge&quot;&gt;
+      &lt;!--&lt;![endif]--&gt;
+      &lt;!--[if (gte mso 9)|(IE)]&gt;
+      &lt;xml&gt;
+        &lt;o:OfficeDocumentSettings&gt;
+          &lt;o:AllowPNG/&gt;
+          &lt;o:PixelsPerInch&gt;96&lt;/o:PixelsPerInch&gt;
+        &lt;/o:OfficeDocumentSettings&gt;
+      &lt;/xml&gt;
+      &lt;![endif]--&gt;
+      &lt;!--[if (gte mso 9)|(IE)]&gt;
+  &lt;style type=3D&quot;text/css&quot;&gt;
+    body {width: 600px;margin: 0 auto;}
+    table {border-collapse: collapse;}
+    table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+    img {-ms-interpolation-mode: bicubic;}
+  &lt;/style&gt;
+&lt;![endif]--&gt;
+      &lt;style type=3D&quot;text/css&quot;&gt;
+    body, p, div {
+      font-family: arial,helvetica,sans-serif;
+      font-size: 14px;
+    }
+    body {
+      color: #000000;
+    }
+    body a {
+      color: #1188E6;
+      text-decoration: none;
+    }
+    p { margin: 0; padding: 0; }
+    table.wrapper {
+      width:100% !important;
+      table-layout: fixed;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    img.max-width {
+      max-width: 100% !important;
+    }
+    .column.of-2 {
+      width: 50%;
+    }
+    .column.of-3 {
+      width: 33.333%;
+    }
+    .column.of-4 {
+      width: 25%;
+    }
+    ul ul ul ul  {
+      list-style-type: disc !important;
+    }
+    ol ol {
+      list-style-type: lower-roman !important;
+    }
+    ol ol ol {
+      list-style-type: lower-latin !important;
+    }
+    ol ol ol ol {
+      list-style-type: decimal !important;
+    }
+    @media screen and (max-width:480px) {
+      .preheader .rightColumnContent,
+      .footer .rightColumnContent {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent div,
+      .preheader .rightColumnContent span,
+      .footer .rightColumnContent div,
+      .footer .rightColumnContent span {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent,
+      .preheader .leftColumnContent {
+        font-size: 80% !important;
+        padding: 5px 0;
+      }
+      table.wrapper-mobile {
+        width: 100% !important;
+        table-layout: fixed;
+      }
+      img.max-width {
+        height: auto !important;
+        max-width: 100% !important;
+      }
+      a.bulletproof-button {
+        display: block !important;
+        width: auto !important;
+        font-size: 80%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .columns {
+        width: 100% !important;
+      }
+      .column {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      .social-icon-column {
+        display: inline-block !important;
+      }
+    }
+  &lt;/style&gt;
+      &lt;!--user entered Head Start--&gt;&lt;!--End Head user entered--&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;center class=3D&quot;wrapper&quot; data-link-color=3D&quot;#1188E6&quot; data-body-style=
+=3D&quot;font-size:14px; font-family:arial,helvetica,sans-serif; color:#000000; =
+background-color:#FFFFFF;&quot;&gt;
+        &lt;div class=3D&quot;webkit&quot;&gt;
+          &lt;table cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; border=3D&quot;0&quot; width=3D&quot;=
+100%&quot; class=3D&quot;wrapper&quot; bgcolor=3D&quot;#FFFFFF&quot;&gt;
+            &lt;tr&gt;
+              &lt;td valign=3D&quot;top&quot; bgcolor=3D&quot;#FFFFFF&quot; width=3D&quot;100%&quot;&gt;
+                &lt;table width=3D&quot;100%&quot; role=3D&quot;content-container&quot; class=3D&quot;o=
+uter&quot; align=3D&quot;center&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; border=3D&quot;0&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td width=3D&quot;100%&quot;&gt;
+                      &lt;table width=3D&quot;100%&quot; cellpadding=3D&quot;0&quot; cellspacing=
+=3D&quot;0&quot; border=3D&quot;0&quot;&gt;
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;!--[if mso]&gt;
+    &lt;center&gt;
+    &lt;table&gt;&lt;tr&gt;&lt;td width=3D&quot;600&quot;&gt;
+  &lt;![endif]--&gt;
+                                    &lt;table width=3D&quot;100%&quot; cellpadding=3D&quot;0&quot;=
+ cellspacing=3D&quot;0&quot; border=3D&quot;0&quot; style=3D&quot;width:100%; max-width:600px;&quot; alig=
+n=3D&quot;center&quot;&gt;
+                                      &lt;tr&gt;
+                                        &lt;td role=3D&quot;modules-container&quot; styl=
+e=3D&quot;padding:0px 0px 0px 0px; color:#000000; text-align:left;&quot; bgcolor=3D&quot;#=
+FFFFFF&quot; width=3D&quot;100%&quot; align=3D&quot;left&quot;&gt;&lt;table class=3D&quot;module preheader preh=
+eader-hide&quot; role=3D&quot;module&quot; data-type=3D&quot;preheader&quot; border=3D&quot;0&quot; cellpaddin=
+g=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;display: none !important;=
+ mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height:=
+ 0; width: 0;&quot;&gt;
+    &lt;tr&gt;
+      &lt;td role=3D&quot;module-content&quot;&gt;
+        &lt;p&gt;Showcasing in our own way how an ad film is made, the 'Good' way=
+&lt;/p&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;2723526a-e8b7-4fbf-8eb6-19edff98e44f&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;&lt;a href=3D&quot;https://u45589122.ct.sendgr=
+id.net/ls/click?upn=3Du001.vCzso5FN-2F8qn2rNJDwExtzVAB2C730odtRSju9lyl-2BOQ=
+-2BTkKMEP-2Fou13nXJBEyZVbdnS_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mn=
+rpXnJHo6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOT=
+aAaC3sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xw=
+g7MHJ-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyY=
+yw15k5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPP=
+KPCJtdHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aW=
+RkfHDiBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqI=
+aXwCjSpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUK=
+wDJBHHvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKno=
+DKAfNstPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-=
+2F567TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA3z2jG2=
+VG0fzrQ-2BEiVBrBDQGgwd-2FNH2igpXEn-2FKXfP-2BPLPr-2FyjelQhSmIC-2FgpqDcs3k0A3=
+HhmJmbzAQHuw0rhmnkbk-2F-2FFwwFGLp7Z2fTsGSeO-2BQBelb4NAMNRF9sxdDbbo-3D&quot;&gt;&lt;img=
+ class=3D&quot;max-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#000000; te=
+xt-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16p=
+x; max-width:100% !important; width:100%; height:auto !important;&quot; width=3D=
+&quot;600&quot; alt=3D&quot;&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsive=3D&quot;=
+true&quot; src=3D&quot;http://cdn.mcauto-images-production.sendgrid.net/1e92628516bc9=
+1b2/5d929f26-81ef-43e6-bc84-ab82b6873be8/563x50.png&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;spacer&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;33bdc0e9-c795-4c86-b0df-bc439b767eaa&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 10px 0px;&quot; role=3D&quot;module-content&quot; bgc=
+olor=3D&quot;&quot;&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;spacer&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;378e9385-6d11-4aca-b524-6d1c351221d6&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 5px 0px;&quot; role=3D&quot;module-content&quot; bgco=
+lor=3D&quot;&quot;&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;017d4045-22d4-4982-bd56-26cc5aacb104&quot; data-mc-mo=
+dule-version=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 10px 0px; line-height:22px; text-align=
+:inherit;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgcolor=3D&quot;&quot; role=3D&quot;module-conte=
+nt&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inherit; text-align: justify&quot;&gt;&lt;span sty=
+le=3D&quot;font-family: tahoma, geneva, sans-serif; color: #000000; font-size: 1=
+4px&quot;&gt;When we started Goodfellas Studio, we did not just want to make great =
+ad films, we wanted to inspire others with what we do. In order to do this,=
+ we have decided to give you an insight on what goes in to making an ad fil=
+m by introducing a new segment - #goodvaluesbygoodfellas, where, our tribe,=
+ partners and clients, get to understand the know-how of ad filmmaking, so =
+that you know how we do what we do.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table border=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;=
+center&quot; width=3D&quot;100%&quot; role=3D&quot;module&quot; data-type=3D&quot;columns&quot; style=3D&quot;paddi=
+ng:0px 0px 0px 0px;&quot; bgcolor=3D&quot;#ffffff&quot; data-distribution=3D&quot;1,1,1&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr role=3D&quot;module-content&quot;&gt;
+        &lt;td height=3D&quot;100%&quot; valign=3D&quot;top&quot;&gt;&lt;table width=3D&quot;193&quot; style=3D&quot;wi=
+dth:193px; border-spacing:0; border-collapse:collapse; margin:0px 5px 0px 0=
+px;&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcolo=
+r=3D&quot;&quot; class=3D&quot;column column-0&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;44cc116f-c730-4170-85f8-f66a58cc6c62&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExtx-2B2aRq87Mw2qP4nAe0tqXnbNoiGWvLRXivuKIVdos79OgJJ6n4qU=
+WENjTgpkMfjJQ-3D-3DDZI2_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpXnJ=
+Ho6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAaC3=
+sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7MHJ=
+-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw15k=
+5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPCJt=
+dHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkfHD=
+iBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXwCj=
+SpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJBH=
+HvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKAfN=
+stPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F567=
+TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA2TOkSQVuqje=
+U50HgWOXGxfsaHulfcuavUgbxT0Pto9-2FpZ0Y0FvT4J2yKk40H9SaoGN44dyQ-2BkD9Socw-2B=
+oL5QW0MkNRqOV04wYT7Y1ts3GpTLlcd2yQi7-2B77cC-2F0bczUbI-3D&quot;&gt;&lt;img class=3D&quot;max=
+-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#000000; text-decoration=
+:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:=
+100% !important; width:100%; height:auto !important;&quot; width=3D&quot;193&quot; alt=3D&quot;=
+&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsive=3D&quot;true&quot; src=3D&quot;=
+http://cdn.mcauto-images-production.sendgrid.net/1e92628516bc91b2/ee20d16d-=
+ea5d-4b16-9830-666eddb905e2/1080x1080.png&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;table width=3D&quot;193&quot; style=3D&quot;width:193px; border-spacing:0; bo=
+rder-collapse:collapse; margin:0px 5px 0px 5px;&quot; cellpadding=3D&quot;0&quot; cellspac=
+ing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcolor=3D&quot;&quot; class=3D&quot;column column-1=
+&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;2ea10ffa-032a-41a1-a9fe-79aabb135d96&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExtx-2B2aRq87Mw2qP4nAe0tqXk5-2BS2myMyl9tBkV2RpdltGPlBIlPT=
+gK-2BITco2j-2B2edJw-3D-3DzTPz_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6m=
+nrpXnJHo6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKO=
+TaAaC3sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4X=
+wg7MHJ-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhy=
+Yyw15k5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nP=
+PKPCJtdHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2a=
+WRkfHDiBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZq=
+IaXwCjSpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktU=
+KwDJBHHvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKn=
+oDKAfNstPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR=
+-2F567TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA2H7QJ=
+-2FL3btg-2BS-2FbGB-2BXs16MS9uvfYNDo4X7KigrbkgEyat4Yt-2BYWmSDAUZTV0WsOMBQaof=
+T8u2krHl-2F3lo5WG-2FlD1fLwqYvrgwXANCjJDlMlHabCff-2BonjXwV8sgq0HSw-3D&quot;&gt;&lt;img =
+class=3D&quot;max-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#000000; tex=
+t-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px=
+; max-width:100% !important; width:100%; height:auto !important;&quot; width=3D&quot;=
+193&quot; alt=3D&quot;&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsive=3D&quot;t=
+rue&quot; src=3D&quot;http://cdn.mcauto-images-production.sendgrid.net/1e92628516bc91=
+b2/226567b1-e210-4f15-8574-f6c78c62333b/1080x1080.png&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;table width=3D&quot;193&quot; style=3D&quot;width:193px; border-spacing:0; bo=
+rder-collapse:collapse; margin:0px 0px 0px 5px;&quot; cellpadding=3D&quot;0&quot; cellspac=
+ing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcolor=3D&quot;&quot; class=3D&quot;column column-2=
+&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;505adabe-019e-40f2-aae1-b7deae174ce9&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExtx-2B2aRq87Mw2qP4nAe0tqXldthCfHyCP2bGkg-2Boz5syP5BDvZiX=
+bAgqViuvRDjRuiQ-3D-3Djszz_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpX=
+nJHo6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAa=
+C3sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7M=
+HJ-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw1=
+5k5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPC=
+JtdHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkf=
+HDiBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXw=
+CjSpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJ=
+BHHvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKA=
+fNstPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F5=
+67TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA0qyY7j3g9=
+blIFqWI-2FH9ZDZdHEj5ZfO-2FQAKiM9IODF5nMwz45qCphv9noAI-2FoJGNCAehmd6RvdEy7Aw=
+41LvkQ7xm6Z2b02HLOvUFYV-2FyPdJtq7HvFzODMMhsNeE9xR2Q7s-3D&quot;&gt;&lt;img class=3D&quot;max=
+-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#000000; text-decoration=
+:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:=
+100% !important; width:100%; height:auto !important;&quot; width=3D&quot;193&quot; alt=3D&quot;=
+&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsive=3D&quot;true&quot; src=3D&quot;=
+http://cdn.mcauto-images-production.sendgrid.net/1e92628516bc91b2/1a276842-=
+37ce-423d-b1f8-532fc8bbb591/1080x1080.png&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;spacer&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;b1b1aad9-3858-4428-96d7-43371b793c76&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 20px 0px;&quot; role=3D&quot;module-content&quot; bgc=
+olor=3D&quot;&quot;&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;divider&quot; bor=
+der=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table=
+-layout: fixed;&quot; data-muid=3D&quot;c965a8ba-ebf1-4844-8ffc-a8bd15e86806&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 0px 0px;&quot; role=3D&quot;module-content&quot; heig=
+ht=3D&quot;100%&quot; valign=3D&quot;top&quot; bgcolor=3D&quot;&quot;&gt;
+          &lt;table border=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;=
+center&quot; width=3D&quot;100%&quot; height=3D&quot;5px&quot; style=3D&quot;line-height:5px; font-size:5=
+px;&quot;&gt;
+            &lt;tbody&gt;
+              &lt;tr&gt;
+                &lt;td style=3D&quot;padding:0px 0px 5px 0px;&quot; bgcolor=3D&quot;#D6D6D6&quot;&gt;=
+&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table border=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;=
+center&quot; width=3D&quot;100%&quot; role=3D&quot;module&quot; data-type=3D&quot;columns&quot; style=3D&quot;paddi=
+ng:10px 0px 0px 0px;&quot; bgcolor=3D&quot;#fffefe&quot; data-distribution=3D&quot;1&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr role=3D&quot;module-content&quot;&gt;
+        &lt;td height=3D&quot;100%&quot; valign=3D&quot;top&quot;&gt;&lt;table width=3D&quot;600&quot; style=3D&quot;wi=
+dth:600px; border-spacing:0; border-collapse:collapse; margin:0px 0px 0px 0=
+px;&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcolo=
+r=3D&quot;&quot; class=3D&quot;column column-0&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;c2e5128d-f404-426f-984d-c121a4c366c8&quot; data-mc-module-version=3D&quot;20=
+19-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:10px 10px 10px 10px; line-height:22px; text-al=
+ign:inherit; background-color:#ffffff;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgco=
+lor=3D&quot;#ffffff&quot; role=3D&quot;module-content&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inh=
+erit; text-align: justify&quot;&gt;&lt;span style=3D&quot;box-sizing: border-box; padding-t=
+op: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; margin=
+-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-st=
+yle: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; =
+font-variant-numeric: inherit; font-variant-east-asian: inherit; font-varia=
+nt-alternates: inherit; font-variant-position: inherit; font-weight: inheri=
+t; font-stretch: inherit; line-height: inherit; font-family: tahoma, geneva=
+, sans-serif; font-optical-sizing: inherit; font-kerning: inherit; font-fea=
+ture-settings: inherit; font-variation-settings: inherit; vertical-align: b=
+aseline; border-top-width: 0px; border-right-width: 0px; border-bottom-widt=
+h: 0px; border-left-width: 0px; border-top-style: initial; border-right-sty=
+le: initial; border-bottom-style: initial; border-left-style: initial; bord=
+er-top-color: initial; border-right-color: initial; border-bottom-color: in=
+itial; border-left-color: initial; border-image-source: initial; border-ima=
+ge-slice: initial; border-image-width: initial; border-image-outset: initia=
+l; border-image-repeat: initial; text-align: justify; color: #000000; lette=
+r-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0p=
+x; -webkit-text-stroke-width: 0px; white-space-collapse: preserve; backgrou=
+nd-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-deco=
+ration-style: initial; text-decoration-color: initial; font-size: 14px&quot;&gt;In =
+the last quarter, we have been showered with work from the best brands in t=
+he country. We managed to tell stories that connect to the soul, making the=
+ brand's relevance clear to the audience. From Pine Labs to Garnier, from A=
+.R Rahman to John Abraham, our calendar has made us smile through the first=
+ half of this year.&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: justify&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: justify&quot;&gt;&lt;span style=3D&quot;box=
+-sizing: border-box; padding-top: 0px; padding-right: 0px; padding-bottom: =
+0px; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: =
+0px; margin-left: 0px; font-style: inherit; font-variant-ligatures: inherit=
+; font-variant-caps: inherit; font-variant-numeric: inherit; font-variant-e=
+ast-asian: inherit; font-variant-alternates: inherit; font-variant-position=
+: inherit; font-weight: inherit; font-stretch: inherit; line-height: inheri=
+t; font-family: tahoma, geneva, sans-serif; font-optical-sizing: inherit; f=
+ont-kerning: inherit; font-feature-settings: inherit; font-variation-settin=
+gs: inherit; vertical-align: baseline; border-top-width: 0px; border-right-=
+width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-st=
+yle: initial; border-right-style: initial; border-bottom-style: initial; bo=
+rder-left-style: initial; border-top-color: initial; border-right-color: in=
+itial; border-bottom-color: initial; border-left-color: initial; border-ima=
+ge-source: initial; border-image-slice: initial; border-image-width: initia=
+l; border-image-outset: initial; border-image-repeat: initial; text-align: =
+justify; color: #000000; letter-spacing: normal; text-indent: 0px; text-tra=
+nsform: none; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-spac=
+e-collapse: preserve; background-color: rgb(255, 255, 255); text-decoration=
+-thickness: initial; text-decoration-style: initial; text-decoration-color:=
+ initial; font-size: 14px&quot;&gt;But this isn't the only reason we are smiling. O=
+ne of our projects from last year, with Lenovo, was our first entry to the =
+Cannes Lions. While we didn't get the shortlist, the experience was truly a=
+mazing.&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: justify&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: justify&quot;&gt;&lt;span style=3D&quot;box=
+-sizing: border-box; padding-top: 0px; padding-right: 0px; padding-bottom: =
+0px; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: =
+0px; margin-left: 0px; font-style: inherit; font-variant-ligatures: inherit=
+; font-variant-caps: inherit; font-variant-numeric: inherit; font-variant-e=
+ast-asian: inherit; font-variant-alternates: inherit; font-variant-position=
+: inherit; font-weight: inherit; font-stretch: inherit; line-height: inheri=
+t; font-family: tahoma, geneva, sans-serif; font-optical-sizing: inherit; f=
+ont-kerning: inherit; font-feature-settings: inherit; font-variation-settin=
+gs: inherit; vertical-align: baseline; border-top-width: 0px; border-right-=
+width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-st=
+yle: initial; border-right-style: initial; border-bottom-style: initial; bo=
+rder-left-style: initial; border-top-color: initial; border-right-color: in=
+itial; border-bottom-color: initial; border-left-color: initial; border-ima=
+ge-source: initial; border-image-slice: initial; border-image-width: initia=
+l; border-image-outset: initial; border-image-repeat: initial; text-align: =
+justify; color: #000000; letter-spacing: normal; text-indent: 0px; text-tra=
+nsform: none; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-spac=
+e-collapse: preserve; background-color: rgb(255, 255, 255); text-decoration=
+-thickness: initial; text-decoration-style: initial; text-decoration-color:=
+ initial; font-size: 14px&quot;&gt;Check out some of the exciting work we have done=
+ over the last quarter. We hope you enjoy viewing them as much as we enjoye=
+d making them.&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: justify&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: justify&quot;&gt;&lt;span style=3D&quot;box=
+-sizing: border-box; padding-top: 0px; padding-right: 0px; padding-bottom: =
+0px; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: =
+0px; margin-left: 0px; font-style: inherit; font-variant-ligatures: inherit=
+; font-variant-caps: inherit; font-variant-numeric: inherit; font-variant-e=
+ast-asian: inherit; font-variant-alternates: inherit; font-variant-position=
+: inherit; font-weight: inherit; font-stretch: inherit; line-height: inheri=
+t; font-family: tahoma, geneva, sans-serif; font-optical-sizing: inherit; f=
+ont-kerning: inherit; font-feature-settings: inherit; font-variation-settin=
+gs: inherit; vertical-align: baseline; border-top-width: 0px; border-right-=
+width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-st=
+yle: initial; border-right-style: initial; border-bottom-style: initial; bo=
+rder-left-style: initial; border-top-color: initial; border-right-color: in=
+itial; border-bottom-color: initial; border-left-color: initial; border-ima=
+ge-source: initial; border-image-slice: initial; border-image-width: initia=
+l; border-image-outset: initial; border-image-repeat: initial; text-align: =
+justify; color: #000000; letter-spacing: normal; text-indent: 0px; text-tra=
+nsform: none; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-spac=
+e-collapse: preserve; background-color: rgb(255, 255, 255); text-decoration=
+-thickness: initial; text-decoration-style: initial; text-decoration-color:=
+ initial; font-size: 14px&quot;&gt;Do you have a script or an idea for you or your =
+client? Drop us a line today!&lt;/span&gt;&lt;span style=3D&quot;font-size: 14px&quot;&gt;&amp;nbsp;&lt;=
+/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table border=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;=
+center&quot; width=3D&quot;100%&quot; role=3D&quot;module&quot; data-type=3D&quot;columns&quot; style=3D&quot;paddi=
+ng:10px 10px 10px 10px;&quot; bgcolor=3D&quot;#d6d6d6&quot; data-distribution=3D&quot;1,1&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr role=3D&quot;module-content&quot;&gt;
+        &lt;td height=3D&quot;100%&quot; valign=3D&quot;top&quot;&gt;&lt;table width=3D&quot;280&quot; style=3D&quot;wi=
+dth:280px; border-spacing:0; border-collapse:collapse; margin:0px 10px 0px =
+0px;&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcol=
+or=3D&quot;&quot; class=3D&quot;column column-0&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;vxyJjxFBv43C7ZPhJcRY1G.2&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExtzVAB2C730odtRSju9lyl-2BOQN-2FoaHzdRNPu75KuG9Yt10W3CC9d=
+o3EvJ6RRNEUO8CA-3D-3DbgLT_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpX=
+nJHo6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAa=
+C3sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7M=
+HJ-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw1=
+5k5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPC=
+JtdHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkf=
+HDiBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXw=
+CjSpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJ=
+BHHvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKA=
+fNstPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F5=
+67TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA3-2BlAxht=
+8d8boXzl9T-2FsriDBpEfq5lDThX9a2DtJ4NWVGC3rJBPjqhqIQ0UWmvK2KZreknxALJ6SyHb7q=
+sh9qk67P3Maiq0X3rE8WoRPsEprcJki6hNHdJ1zNtPSdfD-2B-2B4-3D&quot;&gt;&lt;img class=3D&quot;max=
+-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#000000; text-decoration=
+:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:=
+100% !important; width:100%; height:auto !important;&quot; width=3D&quot;280&quot; alt=3D&quot;=
+&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsive=3D&quot;true&quot; src=3D&quot;=
+http://cdn.mcauto-images-production.sendgrid.net/1e92628516bc91b2/4dae0e55-=
+e53f-41b0-895a-e71201a774e5/1200x675.png&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;prAa9bmhNBeyjkUJZyd8AP.2&quot; data-mc-module-version=
+=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:18px 10px 20px 10px; line-height:22px; text-al=
+ign:inherit; background-color:#ffffff;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgco=
+lor=3D&quot;#ffffff&quot; role=3D&quot;module-content&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inh=
+erit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;font-weight: bold; margin-top: 0p=
+x; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0p=
+x; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; line-height:=
+ 18px; letter-spacing: -0.5px; color: #00ccff; font-size: 13px; font-family=
+: &amp;quot;trebuchet ms&amp;quot;, helvetica, sans-serif&quot;&gt;GARNIER&lt;/span&gt;&lt;span styl=
+e=3D&quot;font-size: 13px; font-family: &amp;quot;trebuchet ms&amp;quot;, helvetica, san=
+s-serif&quot;&gt; &lt;/span&gt;&lt;span style=3D&quot;font-weight: bold; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding=
+-right: 0px; padding-bottom: 0px; padding-left: 0px; line-height: 18px; let=
+ter-spacing: -0.5px; color: #00ccff; font-size: 13px; font-family: &amp;quot;tr=
+ebuchet ms&amp;quot;, helvetica, sans-serif&quot;&gt;| JOHN X MUMBAI INDIAS&lt;/span&gt;&lt;/div=
+&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; mar=
+gin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; p=
+adding-left: 0px; line-height: 20px; letter-spacing: -0.75px; color: #00000=
+0; opacity: 1; font-family: &amp;quot;trebuchet ms&amp;quot;, helvetica, sans-serif=
+; font-size: 15px&quot;&gt;AcnoFight Men's Face Wash&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-family: georgia, serif; font-size: 15px&quot;&gt;In this campaign for IPL 2024, a=
+long with John Abraham and MI, we blend cricket with unexpected elements to=
+ promote Garnier's new AcnoFight face wash for men. &lt;/span&gt;&lt;span style=3D&quot;f=
+ont-size: 15px&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=3D&quot;font-family: georgia, serif; fo=
+nt-size: 15px&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: start&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit; margin-left: 0px&quot;&gt;=
+&lt;span style=3D&quot;box-sizing: border-box; padding-top: 0px; padding-right: 0px=
+; padding-bottom: 0px; padding-left: 0px; margin-top: 0px; margin-right: 0p=
+x; margin-bottom: 0px; margin-left: 0px; font-style: inherit; font-variant-=
+ligatures: inherit; font-variant-caps: inherit; font-variant-numeric: inher=
+it; font-variant-east-asian: inherit; font-variant-alternates: inherit; fon=
+t-variant-position: inherit; font-weight: inherit; font-stretch: inherit; l=
+ine-height: inherit; font-family: georgia, serif; font-optical-sizing: inhe=
+rit; font-kerning: inherit; font-feature-settings: inherit; font-variation-=
+settings: inherit; vertical-align: baseline; border-top-width: 0px; border-=
+right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-=
+top-style: initial; border-right-style: initial; border-bottom-style: initi=
+al; border-left-style: initial; border-top-color: initial; border-right-col=
+or: initial; border-bottom-color: initial; border-left-color: initial; bord=
+er-image-source: initial; border-image-slice: initial; border-image-width: =
+initial; border-image-outset: initial; border-image-repeat: initial; color:=
+ #000000; letter-spacing: normal; text-align: start; text-indent: 0px; text=
+-transform: none; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-=
+space-collapse: preserve; background-color: rgb(255, 255, 255); text-decora=
+tion-thickness: initial; text-decoration-style: initial; text-decoration-co=
+lor: initial; font-size: 15px&quot;&gt;Agency: Schbang&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: start&quot;&gt;&lt;span style=3D&quot;box-s=
+izing: border-box; padding-top: 0px; padding-right: 0px; padding-bottom: 0p=
+x; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0p=
+x; margin-left: 0px; font-style: inherit; font-variant-ligatures: inherit; =
+font-variant-caps: inherit; font-variant-numeric: inherit; font-variant-eas=
+t-asian: inherit; font-variant-alternates: inherit; font-variant-position: =
+inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;=
+ font-optical-sizing: inherit; font-kerning: inherit; font-feature-settings=
+: inherit; font-variation-settings: inherit; vertical-align: baseline; bord=
+er-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; borde=
+r-left-width: 0px; border-top-style: initial; border-right-style: initial; =
+border-bottom-style: initial; border-left-style: initial; border-top-color:=
+ initial; border-right-color: initial; border-bottom-color: initial; border=
+-left-color: initial; border-image-source: initial; border-image-slice: ini=
+tial; border-image-width: initial; border-image-outset: initial; border-ima=
+ge-repeat: initial; color: #000000; letter-spacing: normal; text-align: sta=
+rt; text-indent: 0px; text-transform: none; word-spacing: 0px; -webkit-text=
+-stroke-width: 0px; white-space-collapse: preserve; background-color: rgb(2=
+55, 255, 255); text-decoration-thickness: initial; text-decoration-style: i=
+nitial; text-decoration-color: initial; font-family: georgia, serif; font-s=
+ize: 15px&quot;&gt;Director:&lt;/span&gt;&lt;span style=3D&quot;font-family: georgia, serif; font=
+-size: 15px&quot;&gt; Anish Dedhia&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;spacer&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;0b4d4c9a-7701-4727-b233-658f4105f99d.2.1.1.2&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 30px 0px;&quot; role=3D&quot;module-content&quot; bgc=
+olor=3D&quot;&quot;&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;vxyJjxFBv43C7ZPhJcRY1G.2.1.2&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExtzVAB2C730odtRSju9lyl-2BOqymeYEa53fIfghF0CZ2ddnn59On2nS=
+MssurJCsHRK4g-3D-3DpI2T_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpXnJ=
+Ho6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAaC3=
+sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7MHJ=
+-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw15k=
+5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPCJt=
+dHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkfHD=
+iBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXwCj=
+SpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJBH=
+HvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKAfN=
+stPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F567=
+TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA26daTe0Jqc4=
+IOKzDD9lXB5gzHXI1FYuHJMxsnbcYtEANdtdzdMfSy8K-2FB5n0CHBgyU6zK7Arfyct0QVeHswk=
+9-2B51D82N3BbHy3XcToCA8rQ7l362cGSmDqpOZ7fwT1HqY-3D&quot;&gt;&lt;img class=3D&quot;max-width=
+&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#000000; text-decoration:none;=
+ font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:100% !=
+important; width:100%; height:auto !important;&quot; width=3D&quot;NaN&quot; alt=3D&quot;&quot; data=
+-proportionally-constrained=3D&quot;true&quot; data-responsive=3D&quot;true&quot; src=3D&quot;http:/=
+/cdn.mcauto-images-production.sendgrid.net/1e92628516bc91b2/26e1b66a-f11b-4=
+b27-8627-c74ad9dd693f/1920x1080.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;prAa9bmhNBeyjkUJZyd8AP.2.1.2&quot; data-mc-module-ver=
+sion=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:18px 10px 20px 10px; line-height:22px; text-al=
+ign:inherit; background-color:#ffffff;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgco=
+lor=3D&quot;#ffffff&quot; role=3D&quot;module-content&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inh=
+erit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;font-weight: bold; margin-top: 0p=
+x; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0p=
+x; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; line-height:=
+ 18px; letter-spacing: -0.5px; color: #00ccff; font-family: &amp;quot;trebuchet=
+ ms&amp;quot;, helvetica, sans-serif; font-size: 13px&quot;&gt;PINE LABS&lt;/span&gt;&lt;span st=
+yle=3D&quot;font-size: 13px&quot;&gt; &lt;/span&gt;&lt;span style=3D&quot;font-weight: bold; margin-to=
+p: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-to=
+p: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; line-he=
+ight: 18px; letter-spacing: -0.5px; color: #00ccff; font-family: &amp;quot;treb=
+uchet ms&amp;quot;, helvetica, sans-serif; font-size: 13px&quot;&gt;| GODREJ &amp;amp; TITA=
+N&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; mar=
+gin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; p=
+adding-left: 0px; font-size: 16px; line-height: 20px; letter-spacing: -0.75=
+px; color: #000000; opacity: 1; font-family: &amp;quot;trebuchet ms&amp;quot;, helv=
+etica, sans-serif&quot;&gt;Effortless Success With Pine Labs&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-family: georgia, serif; font-size: 15px&quot;&gt;We created two films, showcasing=
+ collaboration with Godrej and Titan. The films emphasise seamless payment =
+processes, modern technology, and interest-free EMI options to enhance the =
+brand image and attract new business partnerships.&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: left&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: start&quot;&gt;&lt;span style=3D&quot;box-s=
+izing: border-box; padding-top: 0px; padding-right: 0px; padding-bottom: 0p=
+x; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0p=
+x; margin-left: 0px; font-style: inherit; font-variant-ligatures: inherit; =
+font-variant-caps: inherit; font-variant-numeric: inherit; font-variant-eas=
+t-asian: inherit; font-variant-alternates: inherit; font-variant-position: =
+inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;=
+ font-optical-sizing: inherit; font-kerning: inherit; font-feature-settings=
+: inherit; font-variation-settings: inherit; vertical-align: baseline; bord=
+er-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; borde=
+r-left-width: 0px; border-top-style: initial; border-right-style: initial; =
+border-bottom-style: initial; border-left-style: initial; border-top-color:=
+ initial; border-right-color: initial; border-bottom-color: initial; border=
+-left-color: initial; border-image-source: initial; border-image-slice: ini=
+tial; border-image-width: initial; border-image-outset: initial; border-ima=
+ge-repeat: initial; color: #000000; letter-spacing: normal; text-align: sta=
+rt; text-indent: 0px; text-transform: none; word-spacing: 0px; -webkit-text=
+-stroke-width: 0px; white-space-collapse: preserve; background-color: rgb(2=
+55, 255, 255); text-decoration-thickness: initial; text-decoration-style: i=
+nitial; text-decoration-color: initial; font-family: georgia, serif; font-s=
+ize: 15px&quot;&gt;Client: Pine Labs&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: start&quot;&gt;&lt;span style=3D&quot;box-s=
+izing: border-box; padding-top: 0px; padding-right: 0px; padding-bottom: 0p=
+x; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0p=
+x; margin-left: 0px; font-style: inherit; font-variant-ligatures: inherit; =
+font-variant-caps: inherit; font-variant-numeric: inherit; font-variant-eas=
+t-asian: inherit; font-variant-alternates: inherit; font-variant-position: =
+inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;=
+ font-optical-sizing: inherit; font-kerning: inherit; font-feature-settings=
+: inherit; font-variation-settings: inherit; vertical-align: baseline; bord=
+er-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; borde=
+r-left-width: 0px; border-top-style: initial; border-right-style: initial; =
+border-bottom-style: initial; border-left-style: initial; border-top-color:=
+ initial; border-right-color: initial; border-bottom-color: initial; border=
+-left-color: initial; border-image-source: initial; border-image-slice: ini=
+tial; border-image-width: initial; border-image-outset: initial; border-ima=
+ge-repeat: initial; color: #000000; letter-spacing: normal; text-align: sta=
+rt; text-indent: 0px; text-transform: none; word-spacing: 0px; -webkit-text=
+-stroke-width: 0px; white-space-collapse: preserve; background-color: rgb(2=
+55, 255, 255); text-decoration-thickness: initial; text-decoration-style: i=
+nitial; text-decoration-color: initial; font-family: georgia, serif; font-s=
+ize: 15px&quot;&gt;Director:&lt;/span&gt;&lt;span style=3D&quot;font-family: georgia, serif; font=
+-size: 15px&quot;&gt; Kushang Dholakia&lt;/span&gt;&lt;span style=3D&quot;font-size: 15px&quot;&gt; &amp;nbsp=
+;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;spacer&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;0b4d4c9a-7701-4727-b233-658f4105f99d.2.2&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 30px 0px;&quot; role=3D&quot;module-content&quot; bgc=
+olor=3D&quot;&quot;&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;vxyJjxFBv43C7ZPhJcRY1G.2.1.1.1&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot; https://goodfellas.studio/portfolio/bullet-echo-india/&quot;=
+&gt;&lt;img class=3D&quot;max-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#00000=
+0; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-siz=
+e:16px; max-width:100% !important; width:100%; height:auto !important;&quot; wid=
+th=3D&quot;NaN&quot; alt=3D&quot;&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsiv=
+e=3D&quot;true&quot; src=3D&quot;http://cdn.mcauto-images-production.sendgrid.net/1e926285=
+16bc91b2/e7973330-4812-454d-91dc-b40202bf1613/1920x1080.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;prAa9bmhNBeyjkUJZyd8AP.2.1.1.1&quot; data-mc-module-v=
+ersion=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:18px 10px 20px 10px; line-height:22px; text-al=
+ign:inherit; background-color:#ffffff;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgco=
+lor=3D&quot;#ffffff&quot; role=3D&quot;module-content&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inh=
+erit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;font-weight: bold; margin-top: 0p=
+x; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0p=
+x; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 1=
+3px; line-height: 18px; letter-spacing: -0.5px; color: #00ccff; font-family=
+: &amp;quot;trebuchet ms&amp;quot;, helvetica, sans-serif&quot;&gt;KRAFTON&lt;/span&gt; &lt;span sty=
+le=3D&quot;font-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom:=
+ 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-botto=
+m: 0px; padding-left: 0px; font-size: 13px; line-height: 18px; letter-spaci=
+ng: -0.5px; color: #00ccff; font-family: &amp;quot;trebuchet ms&amp;quot;, helvetic=
+a, sans-serif&quot;&gt;| BULLET ECHO&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; mar=
+gin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; p=
+adding-left: 0px; font-size: 16px; line-height: 20px; letter-spacing: -0.75=
+px; color: #000000; opacity: 1; font-family: &amp;quot;trebuchet ms&amp;quot;, helv=
+etica, sans-serif&quot;&gt;Action Redefined&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-family: georgia, serif; font-size: 15px&quot;&gt;Made four quirky ads targeting t=
+he 18-28 age group, highlighting the game's strategic team play and tactica=
+l stealth gameplay, using memorable moments and distinct visuals to capture=
+ the game's essence.&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-family: georgia, serif; font-size: 15px&quot;&gt;Client: Krafton&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-family: georgia, serif; font-size: 15px&quot;&gt;Director: Ray Rajdip&lt;/span&gt;&lt;/div=
+&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;table width=3D&quot;280&quot; style=3D&quot;width:280px; border-spacing:0; bo=
+rder-collapse:collapse; margin:0px 0px 0px 10px;&quot; cellpadding=3D&quot;0&quot; cellspa=
+cing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcolor=3D&quot;&quot; class=3D&quot;column column-=
+1&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;prAa9bmhNBeyjkUJZyd8AP.1.1&quot; data-mc-module-version=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:20px 10px 18px 10px; line-height:22px; text-al=
+ign:inherit; background-color:#ffffff;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgco=
+lor=3D&quot;#ffffff&quot; role=3D&quot;module-content&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inh=
+erit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;font-weight: bold; margin-top: 0p=
+x; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0p=
+x; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 1=
+3px; line-height: 18px; letter-spacing: -0.5px; color: #00ccff; font-family=
+: &amp;quot;trebuchet ms&amp;quot;, helvetica, sans-serif&quot;&gt;METABAND | #SECRETMOUNTA=
+IN&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; mar=
+gin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; p=
+adding-left: 0px; font-size: 16px; line-height: 18px; letter-spacing: -0.5p=
+x; color: #000000; font-family: &amp;quot;trebuchet ms&amp;quot;, helvetica, sans-s=
+erif&quot;&gt;Secret Mountain with A.R Rahman&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-style: normal; font-variant-ligatures: normal; font-variant-caps: normal;=
+ font-weight: 400; letter-spacing: -0.4px; text-align: left; text-indent: 0=
+px; text-transform: none; word-spacing: 0px; -webkit-text-stroke-width: 0px=
+; white-space-collapse: collapse; text-decoration-thickness: initial; text-=
+decoration-style: initial; text-decoration-color: initial; float: none; dis=
+play: inline; color: #000000; background-color: rgb(255, 255, 255); font-fa=
+mily: georgia, serif; font-size: 15px&quot;&gt;We collaborated for a project, blend=
+ing music, technology, and storytelling with an intricate, mystical world w=
+here audiences explore narratives rich with fantasy, myth and technology.&lt;/=
+span&gt;&lt;span style=3D&quot;color: #000000; background-color: rgb(255, 255, 255); f=
+ont-family: georgia, serif; font-size: 15px&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: left&quot;&gt;&lt;span style=3D&quot;font-f=
+amily: georgia, serif; font-size: 15px&quot;&gt;Client: AR Rahman Sir&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: left&quot;&gt;&lt;span style=3D&quot;font-f=
+amily: georgia, serif; font-size: 15px&quot;&gt;Director: Deeksha Tripathi&lt;/span&gt;&lt;/=
+div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;vxyJjxFBv43C7ZPhJcRY1G.1.1&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExtzVAB2C730odtRSju9lyl-2BMqV1TJqzBXoLnLB0wMsRf6DpNUokgrt=
+mBJSb9zjby9rg-3D-3Dy-98_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpXnJ=
+Ho6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAaC3=
+sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7MHJ=
+-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw15k=
+5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPCJt=
+dHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkfHD=
+iBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXwCj=
+SpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJBH=
+HvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKAfN=
+stPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F567=
+TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA104Y-2Fw0r8=
+Iexap-2FCT3BIxzj5Q9gjGr9R9LltA-2FMmOjMbmSkyOVRpJe6plrOk7c17ajuu6gWfDSYZgp9Z=
+zZVMgKa2Q3gfZA2LlpooVM8zprl83Mw-2BxqAKn51ebWMT2V-2BNE-3D&quot;&gt;&lt;img class=3D&quot;max=
+-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#000000; text-decoration=
+:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:=
+100% !important; width:100%; height:auto !important;&quot; width=3D&quot;280&quot; alt=3D&quot;=
+&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsive=3D&quot;true&quot; src=3D&quot;=
+http://cdn.mcauto-images-production.sendgrid.net/1e92628516bc91b2/b90d21fd-=
+d974-48dc-a052-8481f973cb30/575x323.jpeg&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;spacer&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;0b4d4c9a-7701-4727-b233-658f4105f99d.2.1.1.2.1=
+&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 30px 0px;&quot; role=3D&quot;module-content&quot; bgc=
+olor=3D&quot;&quot;&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;prAa9bmhNBeyjkUJZyd8AP.1.1.1.2&quot; data-mc-module-v=
+ersion=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:20px 10px 18px 10px; line-height:22px; text-al=
+ign:inherit; background-color:#ffffff;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgco=
+lor=3D&quot;#ffffff&quot; role=3D&quot;module-content&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inh=
+erit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;font-weight: bold; margin-top: 0p=
+x; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0p=
+x; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 1=
+3px; line-height: 18px; letter-spacing: -0.5px; color: #00ccff; font-family=
+: &amp;quot;trebuchet ms&amp;quot;, helvetica, sans-serif&quot;&gt;NOBROKER| AC &amp;amp;&amp;nbsp;=
+PAINT SERVICES&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; mar=
+gin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; p=
+adding-left: 0px; font-size: 16px; line-height: 20px; letter-spacing: -0.75=
+px; color: #000000; opacity: 1; font-family: &amp;quot;trebuchet ms&amp;quot;, helv=
+etica, sans-serif&quot;&gt;No Fear With NoBroker&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-family: georgia, serif; font-size: 15px&quot;&gt;We crafted humorous and visually=
+ striking 20 seconders for their new AC servicing and home painting service=
+s highlighting reliability and trust, with rich colours and centered framin=
+g to enhance storytelling.&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit; margin-left: 0px&quot;&gt;=
+&lt;span style=3D&quot;box-sizing: border-box; padding-top: 0px; padding-right: 0px=
+; padding-bottom: 0px; padding-left: 0px; margin-top: 0px; margin-right: 0p=
+x; margin-bottom: 0px; margin-left: 0px; font-style: inherit; font-variant-=
+ligatures: inherit; font-variant-caps: inherit; font-variant-numeric: inher=
+it; font-variant-east-asian: inherit; font-variant-alternates: inherit; fon=
+t-variant-position: inherit; font-weight: inherit; font-stretch: inherit; l=
+ine-height: inherit; font-family: georgia, serif; font-optical-sizing: inhe=
+rit; font-kerning: inherit; font-feature-settings: inherit; font-variation-=
+settings: inherit; vertical-align: baseline; border-top-width: 0px; border-=
+right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-=
+top-style: initial; border-right-style: initial; border-bottom-style: initi=
+al; border-left-style: initial; border-top-color: initial; border-right-col=
+or: initial; border-bottom-color: initial; border-left-color: initial; bord=
+er-image-source: initial; border-image-slice: initial; border-image-width: =
+initial; border-image-outset: initial; border-image-repeat: initial; color:=
+ #000000; letter-spacing: normal; text-align: start; text-indent: 0px; text=
+-transform: none; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-=
+space-collapse: preserve; background-color: rgb(255, 255, 255); text-decora=
+tion-thickness: initial; text-decoration-style: initial; text-decoration-co=
+lor: initial; font-size: 15px&quot;&gt;Client: NoBroker&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: start&quot;&gt;&lt;span style=3D&quot;box-s=
+izing: border-box; padding-top: 0px; padding-right: 0px; padding-bottom: 0p=
+x; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0p=
+x; margin-left: 0px; font-style: inherit; font-variant-ligatures: inherit; =
+font-variant-caps: inherit; font-variant-numeric: inherit; font-variant-eas=
+t-asian: inherit; font-variant-alternates: inherit; font-variant-position: =
+inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;=
+ font-optical-sizing: inherit; font-kerning: inherit; font-feature-settings=
+: inherit; font-variation-settings: inherit; vertical-align: baseline; bord=
+er-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; borde=
+r-left-width: 0px; border-top-style: initial; border-right-style: initial; =
+border-bottom-style: initial; border-left-style: initial; border-top-color:=
+ initial; border-right-color: initial; border-bottom-color: initial; border=
+-left-color: initial; border-image-source: initial; border-image-slice: ini=
+tial; border-image-width: initial; border-image-outset: initial; border-ima=
+ge-repeat: initial; color: #000000; letter-spacing: normal; text-align: sta=
+rt; text-indent: 0px; text-transform: none; word-spacing: 0px; -webkit-text=
+-stroke-width: 0px; white-space-collapse: preserve; background-color: rgb(2=
+55, 255, 255); text-decoration-thickness: initial; text-decoration-style: i=
+nitial; text-decoration-color: initial; font-family: georgia, serif; font-s=
+ize: 15px&quot;&gt;Director:&lt;/span&gt;&lt;span style=3D&quot;font-family: georgia, serif; font=
+-size: 15px&quot;&gt; Kushang Dholakia&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;vxyJjxFBv43C7ZPhJcRY1G.1.1.1.2&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExtzVAB2C730odtRSju9lyl-2BN-2Boi1uN0N4MqzVTb5vTDezWYsePBn=
+ODO5xB1Xzqxec3A-3D-3DG63r_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpX=
+nJHo6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAa=
+C3sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7M=
+HJ-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw1=
+5k5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPC=
+JtdHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkf=
+HDiBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXw=
+CjSpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJ=
+BHHvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKA=
+fNstPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F5=
+67TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA0bWex3zaD=
+uSJPGBOnmFAWdvQi5uZU1OyXDMNlh4lpeT7qBfGaTj3CCdMptfdEEMW9-2B-2BQ2HL9F2ZJ2ndb=
+UblXsL50nZst-2Bfytw56D2MZJpugwaWg-2BObooJ5u279nUr-2FNok-3D&quot;&gt;&lt;img class=3D&quot;m=
+ax-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#000000; text-decorati=
+on:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-widt=
+h:100% !important; width:100%; height:auto !important;&quot; width=3D&quot;NaN&quot; alt=
+=3D&quot;&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsive=3D&quot;true&quot; src=
+=3D&quot;http://cdn.mcauto-images-production.sendgrid.net/1e92628516bc91b2/07464=
+132-3a79-4c83-956b-c16af685de63/1920x1080.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;spacer&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;0b4d4c9a-7701-4727-b233-658f4105f99d.2.1.1.1&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 30px 0px;&quot; role=3D&quot;module-content&quot; bgc=
+olor=3D&quot;&quot;&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;prAa9bmhNBeyjkUJZyd8AP.1.1.1.1.1&quot; data-mc-module=
+-version=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:20px 10px 18px 10px; line-height:22px; text-al=
+ign:inherit; background-color:#ffffff;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgco=
+lor=3D&quot;#ffffff&quot; role=3D&quot;module-content&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inh=
+erit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;font-weight: bold; margin-top: 0p=
+x; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0p=
+x; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 1=
+3px; line-height: 18px; letter-spacing: -0.5px; color: #00ccff; font-family=
+: &amp;quot;trebuchet ms&amp;quot;, helvetica, sans-serif&quot;&gt;ARTICLE&lt;/span&gt; &lt;span sty=
+le=3D&quot;font-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom:=
+ 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-botto=
+m: 0px; padding-left: 0px; font-size: 13px; line-height: 18px; letter-spaci=
+ng: -0.5px; color: #00ccff; font-family: &amp;quot;trebuchet ms&amp;quot;, helvetic=
+a, sans-serif&quot;&gt;| MANIFEST MEDIA&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;fon=
+t-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; mar=
+gin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; p=
+adding-left: 0px; font-size: 16px; line-height: 20px; letter-spacing: -0.75=
+px; color: #000000; opacity: 1; font-family: &amp;quot;trebuchet ms&amp;quot;, helv=
+etica, sans-serif&quot;&gt;Our First CANNES Journey&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: left&quot;&gt;&lt;span style=3D&quot;text-a=
+lign: left; color: #000000; font-family: georgia, serif; font-size: 15px&quot;&gt;A=
+ coverage by Manifest Media on our first Cannes entry and the journey in sh=
+ooting the series with FCB Kinnect. The series garnered over 40 million vie=
+ws with an IMDb rating of 9.5.&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; bord=
+er=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-=
+layout: fixed;&quot; data-muid=3D&quot;vxyJjxFBv43C7ZPhJcRY1G.1.1.1.1.1&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExtytPQXBqHP2WLfODKH-2Bv-2BlhTaRFek9FW1Ef6AczRA84Gjcwwjzn=
+evCDbcmkPyiP9Lxci2rM2BFrHd4AMHTLt4EI6ouvs9kP36x-2BlhCZ1HmSYAlyITIwJQcTH-2FN=
+HcjWSDyg-3D-3D-mNY_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpXnJHo6fY=
+wPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAaC3sHlqq=
+51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7MHJ-2FzK=
+iIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw15k5m5RP=
+WgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPCJtdHkk0=
+U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkfHDiBl8-=
+2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXwCjSpQf3=
+soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJBHHvMDe=
+vao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKAfNstPTg=
+azHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F567TlfyO=
+CgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA2FqYSS-2FWFd5Ac6=
+YplmywikL-2BdoDt5guH2AO12T242NFu0b31L0LrY-2FM0-2BM36yj-2FC-2FXM9LC-2FvZ-2FM=
+65-2FORgo4kqpUKDFpCAdhxrN6v3mUvE-2BcHDZsobKvkDOTmOrPfG52SM-3D&quot;&gt;&lt;img class=
+=3D&quot;max-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#000000; text-dec=
+oration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max=
+-width:100% !important; width:100%; height:auto !important;&quot; width=3D&quot;NaN&quot; =
+alt=3D&quot;&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsive=3D&quot;true&quot; =
+src=3D&quot;http://cdn.mcauto-images-production.sendgrid.net/1e92628516bc91b2/f0=
+87a66c-3f91-4c6e-9820-aa1d1a52c569/1920x1080.png&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table border=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;=
+center&quot; width=3D&quot;100%&quot; role=3D&quot;module&quot; data-type=3D&quot;columns&quot; style=3D&quot;paddi=
+ng:0px 0px 0px 0px;&quot; bgcolor=3D&quot;#000000&quot; data-distribution=3D&quot;1,1&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr role=3D&quot;module-content&quot;&gt;
+        &lt;td height=3D&quot;100%&quot; valign=3D&quot;top&quot;&gt;&lt;table width=3D&quot;290&quot; style=3D&quot;wi=
+dth:290px; border-spacing:0; border-collapse:collapse; margin:0px 10px 0px =
+0px;&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcol=
+or=3D&quot;&quot; class=3D&quot;column column-0&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;84e89ec8-49e3-4760-980c-c7f6e14b04c5&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:50px 0px 0px =
+0px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExt9FkORU2ozF6EGq2iX-2BMjXrrpAuThOxg2m3sPsJTJVhuxC2G_IDdq=
+cc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpXnJHo6fYwPsHpo4OcFWYa03a7szbcsk=
+Cy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAaC3sHlqq51e5VBd1aJ-2FBmvp4U2rwn=
+Wd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7MHJ-2FzKiIRApc2OLIiClY1pcJU3pxm=
+ku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw15k5m5RPWgfoVIjJ7luAKd0SB0gxpFB=
+ZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPCJtdHkk0U-2BcVlRLuD2P1oz6jgWuhg=
+4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkfHDiBl8-2F7eG1l9js2zqAChIZE5LnN=
+Q7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXwCjSpQf3soBZqAzFtoSC0KcvGTw-2F2=
+EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJBHHvMDevao3W0Egbrr4Tn08dl-2FWV=
+fnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKAfNstPTgazHT-2FAX5-2Bs3L8WkXxPP=
+u2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F567TlfyOCgqUpYmrml-2B6m9PuH9ewb=
+tC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA1HS3hmeQMFIFxOiYXQVxO8Jz8VKbBH9cZUStgoz=
+22bVZ92CqxGgTgbX9ijc4PJJsZLZ6kJiihgI1Xe3QIdcOifbBXkAfF7KloNfBCG98EZdqpqSF7A=
+Q6faAAGt56BU8gM-3D&quot;&gt;&lt;img class=3D&quot;max-width&quot; border=3D&quot;0&quot; style=3D&quot;display:=
+block; color:#000000; text-decoration:none; font-family:Helvetica, arial, s=
+ans-serif; font-size:16px; max-width:100% !important; width:100%; height:au=
+to !important;&quot; width=3D&quot;290&quot; alt=3D&quot;&quot; data-proportionally-constrained=3D&quot;t=
+rue&quot; data-responsive=3D&quot;true&quot; src=3D&quot;http://cdn.mcauto-images-production.se=
+ndgrid.net/1e92628516bc91b2/01ee6fda-e511-45a8-b987-f82e3bc92861/600x200.pn=
+g&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;table width=3D&quot;290&quot; style=3D&quot;width:290px; border-spacing:0; bo=
+rder-collapse:collapse; margin:0px 0px 0px 10px;&quot; cellpadding=3D&quot;0&quot; cellspa=
+cing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcolor=3D&quot;&quot; class=3D&quot;column column-=
+1&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;85ddd11e-2457-4618-bc7e-de900e4b842c&quot; data-mc-module-version=3D&quot;20=
+19-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:20px 0px 20px 0px; line-height:22px; text-alig=
+n:inherit;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgcolor=3D&quot;&quot; role=3D&quot;module-cont=
+ent&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span st=
+yle=3D&quot;color: #ffffff; font-size: 14px; font-family: tahoma, geneva, sans-s=
+erif&quot;&gt;To Know more drop us an email at&lt;/span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;a href=3D&quot;mailto:=
+connect@goodfellas.studio?subject=3DEnquiry&amp;amp;body=3D&quot;&gt;&lt;span style=3D&quot;col=
+or: #ffffff; font-size: 14px; font-family: tahoma, geneva, sans-serif&quot;&gt;&lt;str=
+ong&gt;connect@goodfellas.studio&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;col=
+or: #ffffff; font-size: 14px; font-family: tahoma, geneva, sans-serif&quot;&gt;or&lt;/=
+span&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;col=
+or: #ffffff; font-size: 14px; font-family: tahoma, geneva, sans-serif&quot;&gt;call=
+ us at &lt;/span&gt;&lt;a href=3D&quot;tel:+919820816145&quot;&gt;&lt;span style=3D&quot;color: #ffffff; =
+font-size: 14px; font-family: tahoma, geneva, sans-serif&quot;&gt;&lt;strong&gt;+91-98208=
+16145&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=3D&quot;font-family: inherit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;col=
+or: #f2f2f2; font-size: 15px; font-style: normal; font-variant-ligatures: n=
+ormal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal;=
+ text-align: left; text-indent: 0px; text-transform: none; word-spacing: 0p=
+x; -webkit-text-stroke-width: 0px; white-space-collapse: collapse; backgrou=
+nd-color: rgb(0, 0, 0); text-decoration-thickness: initial; text-decoration=
+-style: initial; text-decoration-color: initial; float: none; display: inli=
+ne; font-family: tahoma, geneva, sans-serif&quot;&gt;FOLLOW us by clicking on socia=
+l buttons below.&lt;/span&gt;&lt;span style=3D&quot;font-family: tahoma, geneva, sans-ser=
+if&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table border=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;=
+center&quot; width=3D&quot;100%&quot; role=3D&quot;module&quot; data-type=3D&quot;columns&quot; style=3D&quot;paddi=
+ng:10px 100px 20px 100px;&quot; bgcolor=3D&quot;#000000&quot; data-distribution=3D&quot;1,1,1,1=
+&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr role=3D&quot;module-content&quot;&gt;
+        &lt;td height=3D&quot;100%&quot; valign=3D&quot;top&quot;&gt;&lt;table width=3D&quot;100&quot; style=3D&quot;wi=
+dth:100px; border-spacing:0; border-collapse:collapse; margin:0px 0px 0px 0=
+px;&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcolo=
+r=3D&quot;&quot; class=3D&quot;column column-0&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;9e009216-33e3-46c6-8cc6-90790dfffaec&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:8px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExtx-2B2aRq87Mw2qP4nAe0tqXk4OfgV72DM3PnCxwTmKnCOA1h2KBBZ-=
+2B41lqJREvUaRXA-3D-3D7pDc_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpX=
+nJHo6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAa=
+C3sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7M=
+HJ-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw1=
+5k5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPC=
+JtdHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkf=
+HDiBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXw=
+CjSpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJ=
+BHHvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKA=
+fNstPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F5=
+67TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA1xguZiKTP=
+-2FCHfNU8elMNL-2BYHhH43ZHJ0mrIHHZAcYYtcPABi1DtwvZ751eR4972dTP52e-2FEK-2Bbh9=
+Ik-2BwmKkiyP10aJBldRr5fZM06SZAaFwzgnLHP3odkfEA1MmFYZyYsfpV4O-2B0tiYPakkEnnp=
+ijb&quot;&gt;&lt;img class=3D&quot;max-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#0=
+00000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font=
+-size:16px; max-width:60% !important; width:60%; height:auto !important;&quot; w=
+idth=3D&quot;60&quot; alt=3D&quot;&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsi=
+ve=3D&quot;true&quot; src=3D&quot;http://cdn.mcauto-images-production.sendgrid.net/1e92628=
+516bc91b2/199a8574-94a0-4dd7-94e6-08dbd0d05edf/940x788.png&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;710cd768-e57a-4bed-9b27-4fcde14a22f0.1&quot; data-mc-=
+module-version=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 10px 0px; line-height:0px; text-align:=
+inherit;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgcolor=3D&quot;&quot; role=3D&quot;module-conten=
+t&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inherit; text-align: center&quot;&gt;&lt;span style=
+=3D&quot;color: #ffffff; font-size: 12px&quot;&gt;Instagram&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div=
+&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;table width=3D&quot;100&quot; style=3D&quot;width:100px; border-spacing:0; bo=
+rder-collapse:collapse; margin:0px 0px 0px 0px;&quot; cellpadding=3D&quot;0&quot; cellspac=
+ing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcolor=3D&quot;&quot; class=3D&quot;column column-1=
+&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;1c12aef6-bcc1-47ae-942e-f6c22d4bb38a&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:8px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExt6xWJD9g-2BrKlvOs3xOj1VPOZ71TGfZNn1Na114JCQQ-2F-2BEdJy_=
+IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpXnJHo6fYwPsHpo4OcFWYa03a7sz=
+bcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAaC3sHlqq51e5VBd1aJ-2FBmvp4U=
+2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7MHJ-2FzKiIRApc2OLIiClY1pcJU=
+3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw15k5m5RPWgfoVIjJ7luAKd0SB0g=
+xpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPCJtdHkk0U-2BcVlRLuD2P1oz6jg=
+Wuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkfHDiBl8-2F7eG1l9js2zqAChIZE=
+5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXwCjSpQf3soBZqAzFtoSC0KcvGTw=
+-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJBHHvMDevao3W0Egbrr4Tn08dl-=
+2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKAfNstPTgazHT-2FAX5-2Bs3L8Wk=
+XxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F567TlfyOCgqUpYmrml-2B6m9PuH=
+9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA3MO1CzNaqRViylroRwXmRpSmDb7BgqvPsQ8=
+DT3ODcvuevTfmS5xcafMAiRHv4sxXU8SZ3Vu138vQFHP58YhBAUhr7DXbZzFY31jhu6VYr1T800=
+dAoqhQkIzuMMvKe3WlZ-2Bt8rtnJMkTJAg-2FmxXP14d&quot;&gt;&lt;img class=3D&quot;max-width&quot; bord=
+er=3D&quot;0&quot; style=3D&quot;display:block; color:#000000; text-decoration:none; font-=
+family:Helvetica, arial, sans-serif; font-size:16px; max-width:60% !importa=
+nt; width:60%; height:auto !important;&quot; width=3D&quot;60&quot; alt=3D&quot;&quot; data-proporti=
+onally-constrained=3D&quot;true&quot; data-responsive=3D&quot;true&quot; src=3D&quot;http://cdn.mcau=
+to-images-production.sendgrid.net/1e92628516bc91b2/aec8bee6-013b-477f-b225-=
+27817c81d9fa/940x788.png&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;710cd768-e57a-4bed-9b27-4fcde14a22f0.2&quot; data-mc-=
+module-version=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 0px 0px; line-height:0px; text-align:i=
+nherit;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgcolor=3D&quot;&quot; role=3D&quot;module-content=
+&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inherit; text-align: center&quot;&gt;&lt;span style=
+=3D&quot;color: #ffffff; font-size: 12px&quot;&gt;Facebook&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;=
+&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;table width=3D&quot;100&quot; style=3D&quot;width:100px; border-spacing:0; bo=
+rder-collapse:collapse; margin:0px 0px 0px 0px;&quot; cellpadding=3D&quot;0&quot; cellspac=
+ing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcolor=3D&quot;&quot; class=3D&quot;column column-2=
+&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;b08b3ec7-e203-494e-9b1f-282c377f00d5&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:8px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExt2hbbWmeJFymB96V5OL-2BXIq1vltlvA-2FzpiqQYG2ouG3yyzciM9a=
+-2FN7q9IkRSk8tgyw-3D-3DOhXq_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnr=
+pXnJHo6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTa=
+AaC3sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg=
+7MHJ-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYy=
+w15k5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPK=
+PCJtdHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWR=
+kfHDiBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIa=
+XwCjSpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKw=
+DJBHHvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoD=
+KAfNstPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2=
+F567TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA2D95wYx=
+OLUPFHAUPwkHDbSZw8heMkRpAeG9s1q7rNLNOsB67uOL8MqWnzt8-2BqlE5tI8s2-2FIWGu-2Fa=
+-2FasTHUpFKaecmkw8dA8-2Bwv6OQcXjkIZuCR1aMWKsxVFQioBI1iYWZw5UdJal0X7gwSt9pZD=
+J6u&quot;&gt;&lt;img class=3D&quot;max-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#0=
+00000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font=
+-size:16px; max-width:60% !important; width:60%; height:auto !important;&quot; w=
+idth=3D&quot;60&quot; alt=3D&quot;&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsi=
+ve=3D&quot;true&quot; src=3D&quot;http://cdn.mcauto-images-production.sendgrid.net/1e92628=
+516bc91b2/4f0f9dbb-9f87-48fc-bfe5-7157c8c2ad59/940x788.png&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;710cd768-e57a-4bed-9b27-4fcde14a22f0.3&quot; data-mc-=
+module-version=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 0px 0px; line-height:0px; text-align:i=
+nherit;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgcolor=3D&quot;&quot; role=3D&quot;module-content=
+&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inherit; text-align: center&quot;&gt;&lt;span style=
+=3D&quot;color: #ffffff; font-size: 12px&quot;&gt;YouTube&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;=
+/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;table width=3D&quot;100&quot; style=3D&quot;width:100px; border-spacing:0; bo=
+rder-collapse:collapse; margin:0px 0px 0px 0px;&quot; cellpadding=3D&quot;0&quot; cellspac=
+ing=3D&quot;0&quot; align=3D&quot;left&quot; border=3D&quot;0&quot; bgcolor=3D&quot;&quot; class=3D&quot;column column-3=
+&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=3D&quot;padding:0px;margin:0px;border-spacing:0;&quot;&gt;&lt;table cla=
+ss=3D&quot;wrapper&quot; role=3D&quot;module&quot; data-type=3D&quot;image&quot; border=3D&quot;0&quot; cellpadding=
+=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-layout: fixed;&quot; data=
+-muid=3D&quot;d536234e-1e50-4cb1-8aea-5ead3c7a3687&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;font-size:6px; line-height:10px; padding:8px 0px 0px 0=
+px;&quot; valign=3D&quot;top&quot; align=3D&quot;center&quot;&gt;
+         =20
+        &lt;a href=3D&quot;https://u45589122.ct.sendgrid.net/ls/click?upn=3Du001.vC=
+zso5FN-2F8qn2rNJDwExtzFUW5oYapa2shPDYIXL-2FOOjS9MX50Orm27aeXFdCiqgej1-2Blgj=
+WeDSc4HYnxyHnxg-3D-3D0u3L_IDdqcc0OMvtDn3Den8ShKoibpWHp2MKnZbepbLW7NZM6mnrpX=
+nJHo6fYwPsHpo4OcFWYa03a7szbcskCy9xs0x-2BKhA9Tqw-2FkZod-2BINe3ksevtuRfKOTaAa=
+C3sHlqq51e5VBd1aJ-2FBmvp4U2rwnWd2Lg48-2FfTbXv9IE9avuCsCcIpwP3Hl-2Bi7R4Xwg7M=
+HJ-2FzKiIRApc2OLIiClY1pcJU3pxmku3Q2Gkt1vDr2gl4intPOF5NcWjIwLxmI1rRtNkhyYyw1=
+5k5m5RPWgfoVIjJ7luAKd0SB0gxpFBZYoXqBZW-2FasgTCGVmMEbZA1sTrAoXEEyFgfI2nPPKPC=
+JtdHkk0U-2BcVlRLuD2P1oz6jgWuhg4FYtAuxWll-2B7G30-2BpGgGeokI2Q9U0z5i-2F2aWRkf=
+HDiBl8-2F7eG1l9js2zqAChIZE5LnNQ7yUrlwH-2BqZ8hv1jdfvzjIyxmlOF19lASjmlUZqIaXw=
+CjSpQf3soBZqAzFtoSC0KcvGTw-2F2EAcEIYryC0SlR537lkXJPj7WF96c7Bop70rxC1ktUKwDJ=
+BHHvMDevao3W0Egbrr4Tn08dl-2FWVfnrerUlTgT5A-2BcfP99v7D38kUGCyUKiHe6xaRKnoDKA=
+fNstPTgazHT-2FAX5-2Bs3L8WkXxPPu2frUhyrWmhC4g21AxcN4mdt97bwvXEkn7G-2FaDR-2F5=
+67TlfyOCgqUpYmrml-2B6m9PuH9ewbtC00Qmav1MMPhkfbNGD6EwSQ0pQA7BLi7iYA2sKsOcLWg=
+hMslZi8-2FuKEOCPqZ5xTR8srCtl2vTGFIWc50wOyUb-2BrqdFE0frBD83eoiSEHG0IuYJJVBD0=
+UhzokUOjPokeXtAjLfBp-2Fty94g0gkpir-2FF1ky-2BvgxRx94xYLz22GWdUjmuPmpfPIMnvXe=
+h&quot;&gt;&lt;img class=3D&quot;max-width&quot; border=3D&quot;0&quot; style=3D&quot;display:block; color:#000=
+000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-s=
+ize:16px; max-width:60% !important; width:60%; height:auto !important;&quot; wid=
+th=3D&quot;60&quot; alt=3D&quot;&quot; data-proportionally-constrained=3D&quot;true&quot; data-responsive=
+=3D&quot;true&quot; src=3D&quot;http://cdn.mcauto-images-production.sendgrid.net/1e9262851=
+6bc91b2/fcf9ed97-43f5-4a5c-8f76-66186514fb5e/940x788.png&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;710cd768-e57a-4bed-9b27-4fcde14a22f0&quot; data-mc-mo=
+dule-version=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:0px 0px 0px 0px; line-height:0px; text-align:i=
+nherit;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgcolor=3D&quot;&quot; role=3D&quot;module-content=
+&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inherit; text-align: center&quot;&gt;&lt;span style=
+=3D&quot;color: #ffffff; font-size: 12px&quot;&gt;LinkedIn&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;=
+&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;table class=3D&quot;module&quot; role=3D&quot;module&quot; data-type=3D&quot;text&quot; border=
+=3D&quot;0&quot; cellpadding=3D&quot;0&quot; cellspacing=3D&quot;0&quot; width=3D&quot;100%&quot; style=3D&quot;table-la=
+yout: fixed;&quot; data-muid=3D&quot;27f8939d-c3a8-4e85-9970-9b83beb0165b&quot; data-mc-mo=
+dule-version=3D&quot;2019-10-22&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=3D&quot;padding:10px 20px 15px 20px; line-height:10px; text-al=
+ign:inherit; background-color:#000000;&quot; height=3D&quot;100%&quot; valign=3D&quot;top&quot; bgco=
+lor=3D&quot;#000000&quot; role=3D&quot;module-content&quot;&gt;&lt;div&gt;&lt;div style=3D&quot;font-family: inh=
+erit; text-align: inherit&quot;&gt;&lt;span style=3D&quot;font-family: &amp;quot;times new roma=
+n&amp;quot;, times, serif; font-size: 10px; color: #ffffff&quot;&gt;We'd love to connec=
+t with you, via mail once in 2 months, just to let you know about the lates=
+t industry news &amp;amp; trends as well as what we've been up to. If you feel =
+disturbed, no worries! You can opt out anytime by clicking below.&lt;/span&gt;&lt;/d=
+iv&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/td&gt;
+                                      &lt;/tr&gt;
+                                    &lt;/table&gt;
+                                    &lt;!--[if mso]&gt;
+                                  &lt;/td&gt;
+                                &lt;/tr&gt;
+                              &lt;/table&gt;
+                            &lt;/center&gt;
+                            &lt;![endif]--&gt;
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+                      &lt;/table&gt;
+                    &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/center&gt;
+    &lt;img src=3D&quot;https://u45589122.ct.sendgrid.net/wf/open?upn=3Du001.jsAAUQ=
+R05C9Op-2Bm9nwqcCuiTo9D6-2FISqMiHGkT7IlpS1BAWT9kE7aSfJZdWwQi-2FL4-2F9ddkLLH=
+usyrAs2ehxRLi6dKVAgqlFx24CGb6WEtZDMa3le16Rb9EfJFK9ikzGTO-2FJ00NGZtqVjWFMMeM=
+2ulRiuZp1tB5QhlCp1w5p63-2FVIB3ozmrkProYhiZqa9IWIfK4s-2BxyrcLWzC4dIK-2BT9NfV=
+diW5og1-2F27-2BMas3zUqHd5BSApvVW6igNwMrQTtRqNBuTjLXRwPA-2FpAYfQLmbkpw4RjZOt=
+CoyvCd0CTfkN6cnKfkaWFfj2eVULZRh5yptsn453VN7QZDp9xXsFCn3kHnHJ0j9eWoTjOUSY2ZL=
+Wn3bxX1WYACoJz-2BP7jYRvZSArT6g538jBKmhJkcAybEmbQl6T7qvVCHMDN2iNrEMWLAPf9rtH=
+l6qEvcOJUrQKo9qn85GmbePc9atTPLDN99-2FEYPdQqsjhp-2B8Bkt5OP9rM4zvd7PD-2B7jnUu=
+QKJR4gNGuv1kP3PNfGCAod7dwuyLomEUKLc6K-2FMxb5EgZkZlkhA8I8EngWzzCiWuySu0VEdjm=
+d4nm7sP7oh6okBulWZiLQAjCblSfe7nvw-2BHb6mY0dny32RBTDqqzfyDRUK1SnfA-2FLBDuphB=
+kwGhPBYYI7TpHHw993Bl8v37oD-2FQGWfbjFwgTHmhKiM0GzfxwjwLCwyq75ZY9IYHZhRd3d4fc=
+NSXkQknLkcV6qNE-2BkNY1oyHEcPi2KqP84Mnf1k0coCbXKgd1YuDIiRPIsLk5EqvS0BvMNNNCA=
+stP85IaOcXSHcs0vgY-2BMX5LcjslPjFIds6l0urYZtd5WfWBWDTAUVNrrV9Hj4z0sWzFjtUFYH=
+4ZiWkjx1w2mpUS6D5XWAlMyMAF1UJoWX&quot; alt=3D&quot;&quot; width=3D&quot;1&quot; height=3D&quot;1&quot; border=
+=3D&quot;0&quot; style=3D&quot;height:1px !important;width:1px !important;border-width:0 !=
+important;margin-top:0 !important;margin-bottom:0 !important;margin-right:0=
+ !important;margin-left:0 !important;padding-top:0 !important;padding-botto=
+m:0 !important;padding-right:0 !important;padding-left:0 !important;&quot;/&gt;&lt;/bo=
+dy&gt;
+  &lt;/html&gt;
+--226b847d74f127313a53e12ea5feba233610d6ab3acd84f785477eddf3f7--</pre>
+</body>
+</html>
